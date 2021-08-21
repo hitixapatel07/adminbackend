@@ -10,7 +10,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 const authRouter = require('./routes/auth');
-//const userRoutes = require('./routes/users');------------
+//const userRoutes = require('./routes/users');
 
 
 var newsListRouter = require('./routes/newsList');
