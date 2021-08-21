@@ -3,8 +3,8 @@ const { Mongoose } = require("mongoose")
 const mongoose = require('./mongo');
 
 const Contact = new mongoose.Schema({
-    Email: String,
-    Msg: String,
+    email: String,
+    msg: String,
     createdOn: {type: Date, default: Date.now}
 
 });

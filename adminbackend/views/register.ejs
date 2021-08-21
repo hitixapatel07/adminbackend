@@ -1,5 +1,5 @@
-
-    <% include featureViews/head %>
+<% include featureViews/head %>
+<body>
     <% include featureViews/menuItemsLoggedOut %>
         <div class="container" style="width: 40%;">
             <div class="text-center">
@@ -19,7 +19,7 @@
                     <input type="password" class="form-control" id="password" placeholder="Enter Password"
                         name="password" required>
                 </div>
-                <div class="text-centery">
+                <div class="text-center">
                     <div class="errr">
                         <%=error%>
                     </div>
@@ -38,3 +38,5 @@
             </form>
         </div>
         <% include featureViews/footer %>
+</body>
+</html>

@@ -33,13 +33,11 @@ router.get('/newsList', function(req, res, next) {
     const contactDao = new Contact(req.body);
     contactDao.save((err, status)=>{
       if(!err){
-        console.log("Contact Info Saved");
         res.json("We will contact you soon...");
       }
       else{
         res.json("Unable to send...");
       }
-      console.log(req.body);
     })
    });
 
