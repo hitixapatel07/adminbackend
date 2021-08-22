@@ -51,11 +51,16 @@ router.post('/editNews', function(req, res, next) {
       if (!user) { res.redirect('/') }
 
       News.findOneAndUpdate({_id: req.body._id }, 
-        {title: req.body.title ,
-         description: req.body.description,
-         category: req.body.category,
-         url: req.body.url,
-         imgUrl: req.body.imgUrl},{new: true}, (err, doc) =>{
+        {productName: req.body.productName,
+          productCategory: req.body.productCategory,
+          manufacturer: req.body.manufacturer,
+          productImage: req.body.productImage,
+          stock: req.body.stock,
+          unitCost: req.body.unitCost,
+          dimension: req.body.dimension,
+          purchaseOrders: req.body.purchaseOrders,
+          nextPurchase: req.body.nextPurchase,
+          createdBy: req.body.createdBy},{new: true}, (err, doc) =>{
         if (!err){
           //res.redirect("/newsList");
           const string = encodeURIComponent('News has been Edited');

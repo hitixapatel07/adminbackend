@@ -1,9 +1,9 @@
-<% include featureViews/head %>
-  <body>
+
+    <% include featureViews/head %>
     <% include featureViews/menuItemsLoggedIn %>
     <div class="text-center">
       <div class="alert alert-info">
-          <span>Admin Name  : <%= user.name %>  </span><br>
+          <span>Admin Name  : <%= user.firstName %>  </span><br>
           <span>Email : <%= user.email %>  </span>
       </div>
     </div>
@@ -20,18 +20,18 @@
     <table id="newsList" class="table">
       <thead class="">
         <tr>
-          <th scope="col">Title</th>
-          <th scope="col">Description</th>
-          <th scope="col">Published At</th>
+          <th scope="col">productName</th>
+          <th scope="col">productCategory</th>
+          <th scope="col">manufacturer</th>
           <th scope="col">Edit/Delete</th>
         </tr>
       </thead>
       <tbody>
         <% for(var i=0; i<newsData.length; i++){ %>
         <tr>
-          <th scope="row"><%= newsData[i].title %></th>
-          <td><%= newsData[i].description %></td>
-          <td><%= newsData[i].createdOn %></td>
+          <th scope="row"><%= newsData[i].productName %></th>
+          <td><%= newsData[i].productCategory %></td>
+          <td><%= newsData[i].createdDate %></td>
           <td>
             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<%= newsData[i]._id %>">Edit</button>
             <!-- editArticle Modal -->
@@ -39,29 +39,44 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Article</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Inventory</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
                     <form class="card-body" style="width: 30rem;" method="POST" action="/newsList/editNews">
                       <input type="hidden" name="_id" value="<%= newsData[i]._id %>" required>
-                      <label for="title" class="form-label">Title</label>
-                      <input type="text" name="title" class="form-control" id="title" placeholder="Enter Title" value="<%= newsData[i].title %>" required>
+                      <label for="productName" class="form-label">productName</label>
+                      <input type="text" name="productName" class="form-control" id="productName" placeholder="Enter productName" value="<%= newsData[i].productName %>" required>
                       <br>
-                      <label for="description" class="form-label">Description</label>
-                      <textarea type="text" name="description" class="form-control" id="description" placeholder="Enter Description" rows="4" required><%= newsData[i].description %></textarea>
+                      <label for="productCategory" class="form-label">productCategory</label>
+                      <input type="text" name="productCategory" class="form-control" id="productCategory" placeholder="Enter productCategory" value="<%= newsData[i].productCategory %>" required>
                       <br>
-                      <label for="category">Category</label>
-                      <select id="category" name="category" class="form-control" required>
-                        <option value="<%= newsData[i].category %>" selected><%= newsData[i].category %></option>
-                        <option value="normal">normal</option>
-                        <option value="sports">sports</option>
-                      </select><br>
-                      <label for="url" class="form-label">Article Url</label>
-                      <input type="text" name="url" class="form-control" id="url" placeholder="Enter article url" value="<%= newsData[i].url %>" required>
+                      
+                      <label for="manufacturer" class="form-label">manufacturer </label>
+                      <input type="text" name="manufacturer" class="form-control" id="manufacturer" placeholder="Enter manufacturer" value="<%= newsData[i].manufacturer %>" required>
                       <br>
-                      <label for="imgUrl" class="form-label">Article Image Link</label>
-                      <input type="text" name="imgUrl" class="form-control" id="imgUrl" placeholder="Enter image link" value="<%= newsData[i].imgUrl %>" required>
+                      <label for="productImage" class="form-label">product Image Link</label>
+                      <input type="text" name="productImage" class="form-control" id="productImage" placeholder="Enter image link" value="<%= newsData[i].productImage %>" required>
+                      <br>
+                      <label for="stock" class="form-label">stock</label>
+                      <input type="text" name="stock" class="form-control" id="stock" placeholder="Enter stock" value="<%= newsData[i].stock %>" required>
+                      <br>
+
+                      <label for="unitCost" class="form-label">unitCost</label>
+                      <input type="text" name="unitCost" class="form-control" id="unitCost" placeholder="Enter unitCost" value="<%= newsData[i].unitCost %>" required>
+                      <br>
+                      <label for="dimension" class="form-label">dimension</label>
+                      <input type="text" name="dimension" class="form-control" id="dimension" placeholder="Enter dimension" value="<%= newsData[i].dimension %>" required>
+                      <br>
+
+                      <label for="purchaseOrders" class="form-label">purchaseOrders</label>
+                      <input type="text" name="purchaseOrders" class="form-control" id="purchaseOrders" placeholder="Enter purchaseOrders" value="<%= newsData[i].purchaseOrders %>" required>
+                      <br>
+                      <label for="nextPurchase" class="form-label">nextPurchase</label>
+                      <input type="text" name="nextPurchase" class="form-control" id="nextPurchase" placeholder="Enter nextPurchase" value="<%= newsData[i].nextPurchase %>" required>
+                      <br>
+                      <label for="createdBy" class="form-label">createdBy</label>
+                      <input type="text" name="createdBy" class="form-control" id="createdBy" placeholder="Enter createdBy" value="<%= newsData[i].createdBy %>" required>
                       <br>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -120,5 +135,4 @@
    });
     </script>
   <% include featureViews/footer %>
-  </body>
-</html>
+
