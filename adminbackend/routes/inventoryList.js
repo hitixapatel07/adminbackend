@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const News = require('../models/news');
+const News = require('../models/inventory');
 const User = require('../models/admin');
 const LocalStorage = require('node-localstorage').LocalStorage;
 const config = require('../config.js');
@@ -22,9 +22,9 @@ router.get('/', function(req, res, next) {
             if (err) { res.redirect('/') }
             if (!user) { res.redirect('/') }
             
-            News.find({}, (err, newsData)=>{
+            News.find({}, (err, inventoryData)=>{
               if(!err){
-                res.status(200).render('newsList', { title: 'News List', newsData: newsData, user,
+                res.status(200).render('inventoryList', { title: 'Inventory List', inventoryData: inventoryData, user,
                                                       msg: req.query.msg?req.query.msg:''});
               }
               else{
@@ -36,7 +36,7 @@ router.get('/', function(req, res, next) {
  
 });
 
-router.post('/editNews', function(req, res, next) {
+router.post('/editInventory', function(req, res, next) {
 
   const token = localStorage.getItem('authtoken');
   if (!token) {
@@ -63,13 +63,13 @@ router.post('/editNews', function(req, res, next) {
           createdBy: req.body.createdBy},{new: true}, (err, doc) =>{
         if (!err){
           //res.redirect("/newsList");
-          const string = encodeURIComponent('News has been Edited');
-          res.redirect('/newsList/?msg=' + string);
+          const string = encodeURIComponent('inventory has been Edited');
+          res.redirect('/inventoryList/?msg=' + string);
         }
         else{
           //res.send("<h1>Unable to edit...</h1>");
-          const string = encodeURIComponent('Error occured updating news');
-          res.redirect('/newsList/?msg=' + string);
+          const string = encodeURIComponent('Error occured updating inventory');
+          res.redirect('/inventoryList/?msg=' + string);
         }
       })
     });
@@ -78,15 +78,15 @@ router.post('/editNews', function(req, res, next) {
 
  });
 
- router.post('/deleteNews', function(req, res, next) {
+ router.post('/deleteInventory', function(req, res, next) {
  News.findOneAndDelete({_id: req.body._id }, function (err, docs) {
   if (err){
       res.send("<h1>Unable to delete...</h1>");
   }
   else{
-      //res.redirect("/newsList");
-      const string = encodeURIComponent('News has been Deleted');
-      res.redirect('/newsList/?msg=' + string);
+      //res.redirect("/inventoryList");
+      const string = encodeURIComponent('inventory has been Deleted');
+      res.redirect('/inventoryList/?msg=' + string);
   }
 })
 });

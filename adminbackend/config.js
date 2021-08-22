@@ -5,7 +5,7 @@
 
 module.exports = {
     'secret': 'supersecret',
-    'db': 'mongodb://127.0.0.1:27017/adminbackendDB',
+    'db': 'mongodb://127.0.0.1:27017/tilesDB',
     'api_host': 'http://localhost',
     'port': 3000
   };

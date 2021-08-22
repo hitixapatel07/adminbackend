@@ -13,11 +13,11 @@ const config = require('../config/config.js'); // For Secert Token
 
 // For the Schema 
 const User = require('../models/admin');
-const Newslist = require('../models/news')
+const Newslist = require('../models/inventory')
 
 const session = require('express-session');
 
-router.use(session({ secret: 'newsSecretKey', resave: false, saveUninitialized: true }));
+router.use(session({ secret: 'inventorySecretKey', resave: false, saveUninitialized: true }));
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
@@ -73,7 +73,7 @@ router.post('/login', function (req, res) {
                     expiresIn: 86400 // expires in 24 hours
                 });
                 localStorage.setItem('authtoken', token);
-                res.redirect(`/newsList`);
+                res.redirect(`/inventoryList`);
             }
         }
     });

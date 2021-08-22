@@ -16,8 +16,8 @@
       <h4 class="alert-heading text-center" ><%=msg%></h4>
     </div>
     <% } %>
-    <h4 class="text-center">News List</h4>
-    <table id="newsList" class="table">
+    <h4 class="text-center">Inventory List</h4>
+    <table id="inventoryList" class="table">
       <thead class="">
         <tr>
           <th scope="col">productName</th>
@@ -27,15 +27,15 @@
         </tr>
       </thead>
       <tbody>
-        <% for(var i=0; i<newsData.length; i++){ %>
+        <% for(var i=0; i<inventoryData.length; i++){ %>
         <tr>
-          <th scope="row"><%= newsData[i].productName %></th>
-          <td><%= newsData[i].productCategory %></td>
-          <td><%= newsData[i].createdDate %></td>
+          <th scope="row"><%= inventoryData[i].productName %></th>
+          <td><%= inventoryData[i].productCategory %></td>
+          <td><%= inventoryData[i].createdDate %></td>
           <td>
-            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<%= newsData[i]._id %>">Edit</button>
+            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit<%= inventoryData[i]._id %>">Edit</button>
             <!-- editArticle Modal -->
-            <div class="modal fade" id="edit<%= newsData[i]._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="edit<%= inventoryData[i]._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -43,40 +43,40 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form class="card-body" style="width: 30rem;" method="POST" action="/newsList/editNews">
-                      <input type="hidden" name="_id" value="<%= newsData[i]._id %>" required>
+                    <form class="card-body" style="width: 30rem;" method="POST" action="/inventoryList/editinventory">
+                      <input type="hidden" name="_id" value="<%= inventoryData[i]._id %>" required>
                       <label for="productName" class="form-label">productName</label>
-                      <input type="text" name="productName" class="form-control" id="productName" placeholder="Enter productName" value="<%= newsData[i].productName %>" required>
+                      <input type="text" name="productName" class="form-control" id="productName" placeholder="Enter productName" value="<%= inventoryData[i].productName %>" required>
                       <br>
                       <label for="productCategory" class="form-label">productCategory</label>
-                      <input type="text" name="productCategory" class="form-control" id="productCategory" placeholder="Enter productCategory" value="<%= newsData[i].productCategory %>" required>
+                      <input type="text" name="productCategory" class="form-control" id="productCategory" placeholder="Enter productCategory" value="<%= inventoryData[i].productCategory %>" required>
                       <br>
                       
                       <label for="manufacturer" class="form-label">manufacturer </label>
-                      <input type="text" name="manufacturer" class="form-control" id="manufacturer" placeholder="Enter manufacturer" value="<%= newsData[i].manufacturer %>" required>
+                      <input type="text" name="manufacturer" class="form-control" id="manufacturer" placeholder="Enter manufacturer" value="<%= inventoryData[i].manufacturer %>" required>
                       <br>
                       <label for="productImage" class="form-label">product Image Link</label>
-                      <input type="text" name="productImage" class="form-control" id="productImage" placeholder="Enter image link" value="<%= newsData[i].productImage %>" required>
+                      <input type="text" name="productImage" class="form-control" id="productImage" placeholder="Enter image link" value="<%= inventoryData[i].productImage %>" required>
                       <br>
                       <label for="stock" class="form-label">stock</label>
-                      <input type="text" name="stock" class="form-control" id="stock" placeholder="Enter stock" value="<%= newsData[i].stock %>" required>
+                      <input type="text" name="stock" class="form-control" id="stock" placeholder="Enter stock" value="<%= inventoryData[i].stock %>" required>
                       <br>
 
                       <label for="unitCost" class="form-label">unitCost</label>
-                      <input type="text" name="unitCost" class="form-control" id="unitCost" placeholder="Enter unitCost" value="<%= newsData[i].unitCost %>" required>
+                      <input type="text" name="unitCost" class="form-control" id="unitCost" placeholder="Enter unitCost" value="<%= inventoryData[i].unitCost %>" required>
                       <br>
                       <label for="dimension" class="form-label">dimension</label>
-                      <input type="text" name="dimension" class="form-control" id="dimension" placeholder="Enter dimension" value="<%= newsData[i].dimension %>" required>
+                      <input type="text" name="dimension" class="form-control" id="dimension" placeholder="Enter dimension" value="<%= inventoryData[i].dimension %>" required>
                       <br>
 
                       <label for="purchaseOrders" class="form-label">purchaseOrders</label>
-                      <input type="text" name="purchaseOrders" class="form-control" id="purchaseOrders" placeholder="Enter purchaseOrders" value="<%= newsData[i].purchaseOrders %>" required>
+                      <input type="text" name="purchaseOrders" class="form-control" id="purchaseOrders" placeholder="Enter purchaseOrders" value="<%= inventoryData[i].purchaseOrders %>" required>
                       <br>
                       <label for="nextPurchase" class="form-label">nextPurchase</label>
-                      <input type="text" name="nextPurchase" class="form-control" id="nextPurchase" placeholder="Enter nextPurchase" value="<%= newsData[i].nextPurchase %>" required>
+                      <input type="text" name="nextPurchase" class="form-control" id="nextPurchase" placeholder="Enter nextPurchase" value="<%= inventoryData[i].nextPurchase %>" required>
                       <br>
                       <label for="createdBy" class="form-label">createdBy</label>
-                      <input type="text" name="createdBy" class="form-control" id="createdBy" placeholder="Enter createdBy" value="<%= newsData[i].createdBy %>" required>
+                      <input type="text" name="createdBy" class="form-control" id="createdBy" placeholder="Enter createdBy" value="<%= inventoryData[i].createdBy %>" required>
                       <br>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -87,9 +87,9 @@
                 </div>
               </div>
             </div>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<%= newsData[i]._id %>">Delete</button>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete<%= inventoryData[i]._id %>">Delete</button>
             <!-- deleteArticle Modal -->
-            <div class="modal fade" id="delete<%= newsData[i]._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="delete<%= inventoryData[i]._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -101,8 +101,8 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <form method="POST" action="/newsList/deleteNews">
-                      <input type="hidden" name="_id" value="<%= newsData[i]._id %>">
+                    <form method="POST" action="/inventoryList/deleteInventory">
+                      <input type="hidden" name="_id" value="<%= inventoryData[i]._id %>">
                       <button type="submit" method="POST" class="btn btn-primary">Delete</button>
                     </form>
                     
@@ -122,7 +122,7 @@
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap5.min.js"></script>
     <script>
       $(document).ready(function() {
-    $('#newsList').DataTable();
+    $('#inventoryList').DataTable();
     } );
 
     $(".alert.alert-primary")

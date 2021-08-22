@@ -13,9 +13,9 @@ const authRouter = require('./routes/auth');
 //const userRoutes = require('./routes/users');
 
 
-var newsListRouter = require('./routes/newsList');
-var addNewsRouter = require('./routes/addNews')
-var newsRouter =require('./routes/news')
+var inventoryListRouter = require('./routes/inventoryList');
+var addInventoryRouter = require('./routes/addInventory')
+var inventoryRouter =require('./routes/inventory')
 
 const port = 3000;
 var http = require('http').createServer(app);
@@ -66,9 +66,9 @@ app.use('/auth', authRouter);
 
 //app.use('/', indexRouter);
 // app.use('/users', usersRouter);
-app.use('/newsList', newsListRouter);
-app.use('/addNews', addNewsRouter);
-app.use('/api', newsRouter);
+app.use('/inventoryList', inventoryListRouter);
+app.use('/addInventory', addInventoryRouter);
+app.use('/api', inventoryRouter);
 
 let sess;
 
@@ -114,13 +114,6 @@ http.listen(port, "127.0.0.1", () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
 
-io.on('connection', (socket) =>{
-  //console.log('a user connected');
-  socket.on('message', (msg) => {
-    console.log(msg);
-    socket.broadcast.emit('message-broadcast', msg);
-  });
-});
 
 
 
