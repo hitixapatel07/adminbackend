@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const News = require('../models/inventory');
+const Inventory = require('../models/inventory');
 const User = require('../models/admin');
 const LocalStorage = require('node-localstorage').LocalStorage;
 const config = require('../config.js');
@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
             if (err) { res.redirect('/') }
             if (!user) { res.redirect('/') }
             
-            News.find({}, (err, inventoryData)=>{
+            Inventory.find({}, (err, inventoryData)=>{
               if(!err){
                 res.status(200).render('inventoryList', { title: 'Inventory List', inventoryData: inventoryData, user,
                                                       msg: req.query.msg?req.query.msg:''});
@@ -50,7 +50,7 @@ router.post('/editInventory', function(req, res, next) {
       if (err) { res.redirect('/') }
       if (!user) { res.redirect('/') }
 
-      News.findOneAndUpdate({_id: req.body._id }, 
+      Inventory.findOneAndUpdate({_id: req.body._id }, 
         {productName: req.body.productName,
           productCategory: req.body.productCategory,
           manufacturer: req.body.manufacturer,
@@ -62,7 +62,7 @@ router.post('/editInventory', function(req, res, next) {
           nextPurchase: req.body.nextPurchase,
           createdBy: req.body.createdBy},{new: true}, (err, doc) =>{
         if (!err){
-          //res.redirect("/newsList");
+          //res.redirect("/inventoryList");
           const string = encodeURIComponent('inventory has been Edited');
           res.redirect('/inventoryList/?msg=' + string);
         }
@@ -79,7 +79,7 @@ router.post('/editInventory', function(req, res, next) {
  });
 
  router.post('/deleteInventory', function(req, res, next) {
- News.findOneAndDelete({_id: req.body._id }, function (err, docs) {
+  Inventory.findOneAndDelete({_id: req.body._id }, function (err, docs) {
   if (err){
       res.send("<h1>Unable to delete...</h1>");
   }

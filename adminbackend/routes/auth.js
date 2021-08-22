@@ -13,7 +13,7 @@ const config = require('../config/config.js'); // For Secert Token
 
 // For the Schema 
 const User = require('../models/admin');
-const Newslist = require('../models/inventory')
+const inventorylist = require('../models/inventory')
 
 const session = require('express-session');
 

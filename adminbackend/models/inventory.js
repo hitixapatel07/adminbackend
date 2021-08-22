@@ -1,6 +1,6 @@
 const mongoose = require('./mongo');
 
-const News = new mongoose.Schema({
+const Inventory = new mongoose.Schema({
     // title: String,
     // description: String,
     // category: String,
@@ -22,4 +22,4 @@ const News = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model('News', News);
+module.exports = mongoose.model('Inventory', Inventory);

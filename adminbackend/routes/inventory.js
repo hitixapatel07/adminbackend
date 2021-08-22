@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
-const News = require('../models/inventory');
+const Inventory = require('../models/inventory');
 
 
 router.get('/inventoryList', function(req, res, next) {
   let numInventory = parseInt(req.query.numInventory);
   if(numInventory){
-    News.find({category: "normal"}).sort({'createdOn': -1}).limit(numInventory).exec(function(err,data) {
+    Inventory.find({category: "normal"}).sort({'createdOn': -1}).limit(numInventory).exec(function(err,data) {
       if(!err){
           res.status(200).json(data)
       } else {
@@ -16,9 +16,9 @@ router.get('/inventoryList', function(req, res, next) {
   });
 
   } else {
-    News.find({}).sort({'createdOn': -1}).exec((err, newsData)=>{
+    Inventory.find({}).sort({'createdOn': -1}).exec((err, inventoryData)=>{
       if(!err){
-        res.status(200).json(newsData);
+        res.status(200).json(inventoryData);
       }
       else{
         res.json(err);
